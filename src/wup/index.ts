@@ -9,12 +9,17 @@ const iasRouter: Router = express.Router();
 const ccsRouter: Router = express.Router();
 const ccsCdnRouter: Router = express.Router();
 
+import ECOMMERCE from './routes/ecs';
+import IDENTIFY_AUTHENTICATION from './routes/ias';
+import CCS from './routes/ccs';
+import CCS_CDN from './routes/ccs-cdn';
+
 const wup = {
-    ECOMMERCE: require('./ecs'),
-	IDENTIFY_AUTHENTICATION: require('./ias'),
-	CCS: require('./ccs'),
-	CCS_CDN: require('./ccs-cdn')
-}
+    ECOMMERCE,
+    IDENTIFY_AUTHENTICATION,
+    CCS,
+    CCS_CDN
+};
 
 logger.info('[WUP] Creating \'ecs.wup.shop\' subdomain');
 wupRouter.use(subdomain('ecs.wup.shop', ecsRouter));
